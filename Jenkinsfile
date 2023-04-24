@@ -3,6 +3,7 @@ pipeline{
     agent any 
     tools { 
        maven 'Maven-3.8.6' 
+       sonar 'Sonar-Server-7.8'
      
    }
     
