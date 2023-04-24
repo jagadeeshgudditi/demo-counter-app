@@ -3,7 +3,7 @@ pipeline{
     agent any 
     tools { 
        maven 'Maven-3.8.6' 
-       sonar 'Sonar-Server-7.8'
+       
      
    }
     
@@ -36,8 +36,8 @@ pipeline{
         }
         stage("Static code analysis"){
             steps{
-                scripts{
-                    withSonarQubeEnv(credentialsId: 'Sonar-1') {
+                withSonarQubeEnv(credentialsId: 'Sonar-1') {
+                    withMaven(maven:Maven-3.8.6){
                         sh "mvn clean package sonar:sonar"
                     }
                 }
