@@ -16,7 +16,7 @@ pipeline{
         }
         stage("UNIT Test"){
             steps{
-                
+                agent any
                 sh "mvn test"
             }
         }
