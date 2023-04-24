@@ -34,13 +34,19 @@ pipeline{
                 sh "mvn clean install"
             }
         }
-        stage("Static code analysis"){
-            steps{
-                withSonarQubeEnv(credentialsId: 'Sonar-1') {
-                    withMaven(maven:'Maven-3.8.6'){
-                        sh "mvn clean package sonar:sonar"
-                    }
+        stage('Sonarqube') {
+            environment {
+            scannerHome = tool 'SonarQubeScanner'
+            }
+            steps {
+            withSonarQubeEnv('sonarqube') {
+                sh "${scannerHome}/bin/sonar-scanner"
+            }
+                timeout(time: 10, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
                 }
+    }
+}
                 
             }
         }
