@@ -37,7 +37,7 @@ pipeline{
         stage("Static code analysis"){
             steps{
                 withSonarQubeEnv(credentialsId: 'Sonar-1') {
-                    withMaven(maven:Maven-3.8.6){
+                    withMaven(maven:'Maven-3.8.6'){
                         sh "mvn clean package sonar:sonar"
                     }
                 }
