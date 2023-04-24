@@ -1,6 +1,10 @@
 pipeline{
     
     agent any 
+    tools { 
+       maven 'Maven-3.8.6' 
+     
+   }
     
     stages {
         
@@ -16,7 +20,6 @@ pipeline{
         }
         stage("UNIT Test"){
             steps{
-                agent any
                 sh "mvn test"
             }
         }
