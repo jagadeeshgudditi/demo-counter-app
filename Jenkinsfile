@@ -39,7 +39,7 @@ pipeline{
             scannerHome = tool 'SonarQubeScanner'
             }
             steps {
-            withSonarQubeEnv(credentialsId: 'Sonar-Token') {
+            withSonarQubeEnv('sonarqube') {
                 sh "${scannerHome}/bin/sonar-scanner"
             }
                 timeout(time: 10, unit: 'MINUTES') {
