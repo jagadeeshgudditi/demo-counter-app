@@ -17,7 +17,7 @@ pipeline{
         stage("UNIT Test"){
             steps{
                 
-                sh "Maven-3.8.6 test"
+                sh "mvn test"
             }
         }
     }
